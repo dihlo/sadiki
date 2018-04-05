@@ -8,8 +8,14 @@ import MyHeader from "./MyHeader";
 
 const Webpage = () => (
 	<div>
-		<MyHeader />
-		<Sider />
+		<Layout>
+			<Layout>
+				<MyHeader />
+			</Layout>
+			<Layout>	
+				<Sider />
+			</Layout>
+		</Layout>
 	</div>
 );
 
