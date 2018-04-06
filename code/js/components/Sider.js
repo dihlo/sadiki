@@ -4,7 +4,7 @@ import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-class Sider extends React.Component {
+class MySider extends React.Component {
   render() {
     return (
       <Menu
@@ -43,4 +43,4 @@ class Sider extends React.Component {
   }
 }
 
-export default Sider;
+export default MySider;
