@@ -1,6 +1,6 @@
-export const select = (car) => {
+export const select = (pages) => {
 	return {
-		type: "CAR_SELECTED",
-		payload: car,
+		type: "PAGE_SELECTED",
+		payload: page,
 	}
 };
