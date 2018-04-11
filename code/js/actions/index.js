@@ -1,6 +1,6 @@
-export const select = (pages) => {
+export const select = (id) => {
 	return {
 		type: "PAGE_SELECTED",
-		payload: page,
+		payload: id,
 	}
 };

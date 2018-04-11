@@ -3,24 +3,29 @@ export default function() {
 		{
 			id: 1,
 			name: "Обеды",
+			icon: "coffee",
 		},
 
 		{
 			id: 2,
 			name: "Расписание",
+			icon: "schedule",
 		},
 
 		{
 			id: 3,
 			name: "Новости",
+			icon: "solution",
 		},
 		{
 			id: 4,
 			name: "Шаблоны",
+			icon: "fork",
 		},
 		{
 			id: 5,
 			name: "Пользователи",
+			icon: "user",
 		},								
 	]
 }

@@ -1,7 +1,13 @@
-export default function (state=null, action) {
+const INITIAL_STATE = {
+	pageID: 1,
+}
+
+export default function (state=INITIAL_STATE, action) {
+	console.log(action);
 	switch (action.type) {
 		case "PAGE_SELECTED":
-		return action.payload;
+		state.pageID = action.payload;
+		return state;
 		break;
 	default:
 		return state;
