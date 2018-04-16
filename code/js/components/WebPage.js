@@ -7,6 +7,11 @@ import Pages from "../containers/Pages";
 import { DatePicker, Layout} from 'antd';
 import MySider from "./Sider";
 import MyHeader from "./MyHeader";
+import Diner from "./Diner";
+import Schedule from "./Schedule";
+import News from "./News";
+import Teamplate from "./Teamplate";
+import Users from "./Users";
 import WrappedRegistrationForm from "./Form";
 import { Row, Col } from 'antd';
 import {connect} from 'react-redux';
@@ -17,9 +22,25 @@ const { Header, Footer, Sider, Content } = Layout;
 class Webpage extends React.Component {
 
 renderPage (key) {
-	return (
-		<div>{key}</div>
-	);
+	switch (key) {
+		case "1":
+		return <Diner/>;
+		break;
+		case "2":
+		return <Schedule/>;
+		break;
+		case "3":
+		return <News/>;
+		break;
+		case "4":
+		return <Teamplate/>;
+		break;
+		case "5":
+		return <Users/>;
+		break;
+	default:
+		return <Diner/>;
+	}
 }
 
 
