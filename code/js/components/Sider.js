@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index';
 
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Row, Col } from 'antd';
 
 
 
@@ -26,15 +26,18 @@ class MySider extends React.Component {
 
   render() {
     return (
-      <Menu
-        onClick={this.onClick.bind(this)} 
-        style={{ width: 256 }}
-        defaultSelectedKeys={['1']}
-        /*defaultOpenKeys={['sub1']}*/
-        mode="inline"
-      > 
-        {this.showlist()}
-      </Menu>
+      <Row>
+        <Col span={24}>
+          <Menu
+            onClick={this.onClick.bind(this)} 
+            defaultSelectedKeys={['1']}
+            /*defaultOpenKeys={['sub1']}*/
+            mode="inline"
+          > 
+            {this.showlist()}
+          </Menu>
+        </Col>
+      </Row>
     );
   }
 }

@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index';
+import ModalDiner from "./ModalDiner";
+import Titles from "./Titles";
+import { Table, Icon, Divider, Row, Col } from 'antd';
 
-import { Table, Icon, Divider } from 'antd';
 
       const columns = [{
         title: 'Name',
@@ -112,7 +114,28 @@ class News extends React.Component {
 
   render() {
     return (
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <div>
+        <Row >
+          <Col 
+            offset={1} 
+            span={11}
+            style={{ paddingTop: 20, paddingBottom: 20}}
+          >
+            <Titles/>            
+          </Col>
+          <Col
+            span={11}
+            style={{textAlign: 'right'}}
+          >
+            <ModalDiner/>            
+          </Col> 
+        </Row> 
+        <Row>
+          <Col offset={1} span={22}>        
+            <Table columns={columns} dataSource={data} onChange={onChange} />
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

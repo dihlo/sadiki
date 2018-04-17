@@ -51,10 +51,10 @@ renderPage (key) {
 	      	<MyHeader />
 	      <Layout style={{background: '#fff', width: '256 px;' }}>
 	      	<Row>
-		      	<Col span={6}>
+		      	<Col span={4}>
 		        	<MySider />
 		        </Col>
-		        <Col span={12}>	
+		        <Col span={20}>	
 		        	{this.renderPage(this.props.pageID)}
 		        </Col>	
 	        </Row>	
