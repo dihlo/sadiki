@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index';
+import DinerData from '../reducers/DinerTableData';
 import ModalDiner from "./ModalDiner";
 import Titles from "./Titles";
 import { Table, Icon, Divider, Row, Col } from 'antd';
 
 
       const columns = [{
-        title: 'Name',
+        title: 'Имя',
         dataIndex: 'name',
-        filters: [{
+        /*filters: [{
           text: 'Joe',
           value: 'Joe',
         }, {
@@ -27,19 +28,19 @@ import { Table, Icon, Divider, Row, Col } from 'antd';
             text: 'Black',
             value: 'Black',
           }],
-        }],
+        }],*/
         // specify the condition of filtering result
         // here is that finding the name started with `value`
         onFilter: (value, record) => record.name.indexOf(value) === 0,
         sorter: (a, b) => a.name.length - b.name.length,
       }, 
       {
-        title: 'Age',
-        dataIndex: 'age',
+        title: 'Калории',
+        dataIndex: 'callory',
         defaultSortOrder: 'descend',
         sorter: (a, b) => a.age - b.age,
       }, 
-      {
+      /*{
         title: 'Address',
         dataIndex: 'address',
         filters: [{
@@ -52,17 +53,10 @@ import { Table, Icon, Divider, Row, Col } from 'antd';
         filterMultiple: false,
         onFilter: (value, record) => record.address.indexOf(value) === 0,
         sorter: (a, b) => a.address.length - b.address.length,
-      },
+      },*/
       { 
         title: 'Дата',
         dataIndex: 'date',
-        filters: [{
-          text: 'Joe',
-          value: 'Joe',
-        }, {
-          text: 'Jim',
-          value: 'Jim',
-        }],
         // specify the condition of filtering result
         // here is that finding the name started with `value`
         onFilter: (value, record) => record.name.indexOf(value) === 0,
@@ -71,7 +65,8 @@ import { Table, Icon, Divider, Row, Col } from 'antd';
 
       ];
 
-      const data = [{
+
+     const data = [{
         key: '1',
         name: 'John Brown',
         age: 32,
@@ -92,7 +87,6 @@ import { Table, Icon, Divider, Row, Col } from 'antd';
         age: 32,
         address: 'London No. 2 Lake Park',
       }];
-
       function onChange(pagination, filters, sorter) {
         console.log('params', pagination, filters, sorter);
       }
@@ -101,20 +95,24 @@ import { Table, Icon, Divider, Row, Col } from 'antd';
 class Diner extends React.Component {
     constructor(props) {
         super(props);
-        /*this.state = {
+        this.state = {
           confirmDirty: false,
           autoCompleteResult: [],
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleConfirmBlur = this.handleConfirmBlur.bind(this);
-        this.compareToFirstPassword = this.compareToFirstPassword.bind(this);
-        this.validateToNextPassword = this.validateToNextPassword.bind(this);
-        this.handleWebsiteChange = this.handleWebsiteChange.bind(this);*/
+
+        this.cons = this.cons.bind(this);
+    }
+
+    cons(){
+      console.log(this.props.DinerData);
+      //this.props.DinerData
     }
 
   render() {
+
     return (
-      <div>
+        <div>
+        {this.cons()}
         <Row >
           <Col 
             offset={1} 
@@ -132,7 +130,7 @@ class Diner extends React.Component {
         </Row> 
         <Row>
           <Col offset={1} span={22}>        
-            <Table columns={columns} dataSource={data} onChange={onChange} />
+            <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={this.props.DinerData} onChange={onChange} />
           </Col>
         </Row>
       </div>
@@ -142,7 +140,8 @@ class Diner extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    pages: state.pages
+    pages: state.pages,
+    DinerData: state.DinerData,
   };
 }
 
