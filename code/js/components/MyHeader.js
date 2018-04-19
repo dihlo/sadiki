@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { Menu, Icon, Layout, Avatar, Button, Col, Row } from 'antd';
+import {toapi} from '../actions';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 class MyHeader extends React.Component {
 
+
+  login() {
+    console.log(this.props.toapi());
+  }
+
   render() {
+    console.log(this.props.rows);
     return (
         /*state = {
           current: 'mail',
@@ -28,11 +37,22 @@ class MyHeader extends React.Component {
                 <span>Дорофей</span>
               </Col>
               <Col offset={18} span={2}>
-                <Button style={{backgroundColor: '#87d068', color: '#fff' }}>Выход</Button>
+                <Button onClick={this.login.bind(this)} style={{backgroundColor: '#87d068', color: '#fff' }}>Выход</Button>
               </Col>
             </Row>  
           </Menu>
     );
   }
 }
-export default MyHeader; 
+
+function mapStateToProps(state) {
+  const { rows, loading, error } = state.auth.authdata;
+  return { rows, loading, error };
+}
+
+function matchDispatchToProps (dispatch) {
+  return bindActionCreators ({toapi: toapi}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(MyHeader);
+
