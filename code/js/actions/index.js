@@ -8,15 +8,33 @@ export const select = (id) => {
 };
 
 export const toapi = () => {
+	console.log('Я в то апи');
 	return (dispatch) => {
+		axios.defaults.headers.common = {};
 		dispatch({
 			type: "TO_API"
 		});
 
-		axios.post('http://khar.s-vfu.ru/authenticate', {
-		    email: 'doro@doro.ro',
-		    password: '123qwe123'
+		axios({
+		  method:'get',
+		  url:'http://saddev.s-vfu.ru/meals',
+		})
+		  .then(function(response) {
+		  	console.log('Я в ответе');
+		   	dispatch({
+				type: "TO_API_OK",
+				data: response.data,
+			});
 		  })
+		  .catch(function (error) {
+		  	console.log('Я в ошибке');
+		   	dispatch({
+				type: "TO_API_ERROR",
+				data: "error_auth",
+			});		  	
+		});
+
+		/*axios.get('http://saddev.s-vfu.ru/meals')
 		  .then(function (response) {
 		    console.log(response);
 		   	dispatch({
@@ -30,7 +48,7 @@ export const toapi = () => {
 				data: "error_auth",
 			});		  	
 		    console.log(error);
-		  });
+		  });*/
 
 	};
 };

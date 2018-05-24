@@ -8,14 +8,16 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 class MyHeader extends React.Component {
-
-
-  login() {
-    console.log(this.props.toapi());
+  /*componentDidMount() {
+    this.props.toapi();
   }
+*/
+  /*login() {
+
+    console.log(this.props.toapi());
+  }*/
 
   render() {
-    console.log(this.props.rows);
     return (
         /*state = {
           current: 'mail',
@@ -37,7 +39,7 @@ class MyHeader extends React.Component {
                 <span>Дорофей</span>
               </Col>
               <Col offset={18} span={2}>
-                <Button onClick={this.login.bind(this)} style={{backgroundColor: '#87d068', color: '#fff' }}>Выход</Button>
+                <Button onClick={()=>{this.props.toapi()}/*this.login.bind(this)*/} style={{backgroundColor: '#87d068', color: '#fff' }}>Выход</Button>
               </Col>
             </Row>  
           </Menu>

@@ -7,86 +7,30 @@ import DinerData from '../reducers/DinerTableData';
 import ModalDiner from "./ModalDiner";
 import Titles from "./Titles";
 import { Table, Icon, Divider, Row, Col } from 'antd';
+import {meals} from '../actions/meals';
 
 
       const columns = [{
         title: 'Имя',
         dataIndex: 'name',
-        /*filters: [{
-          text: 'Joe',
-          value: 'Joe',
-        }, {
-          text: 'Jim',
-          value: 'Jim',
-        }, {
-          text: 'Submenu',
-          value: 'Submenu',
-          children: [{
-            text: 'Green',
-            value: 'Green',
-          }, {
-            text: 'Black',
-            value: 'Black',
-          }],
-        }],*/
-        // specify the condition of filtering result
-        // here is that finding the name started with `value`
         onFilter: (value, record) => record.name.indexOf(value) === 0,
         sorter: (a, b) => a.name.length - b.name.length,
       }, 
       {
         title: 'Калории',
-        dataIndex: 'callory',
+        dataIndex: 'calories',
         defaultSortOrder: 'descend',
         sorter: (a, b) => a.age - b.age,
       }, 
-      /*{
-        title: 'Address',
-        dataIndex: 'address',
-        filters: [{
-          text: 'London',
-          value: 'London',
-        }, {
-          text: 'New York',
-          value: 'New York',
-        }],
-        filterMultiple: false,
-        onFilter: (value, record) => record.address.indexOf(value) === 0,
-        sorter: (a, b) => a.address.length - b.address.length,
-      },*/
       { 
         title: 'Дата',
-        dataIndex: 'date',
-        // specify the condition of filtering result
-        // here is that finding the name started with `value`
+        dataIndex: 'updated_at',
         onFilter: (value, record) => record.name.indexOf(value) === 0,
         sorter: (a, b) => a.name.length - b.name.length,
       },
 
       ];
 
-
-     const data = [{
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-      }, {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-      }, {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-      }, {
-        key: '4',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      }];
       function onChange(pagination, filters, sorter) {
         console.log('params', pagination, filters, sorter);
       }
@@ -100,19 +44,29 @@ class Diner extends React.Component {
           autoCompleteResult: [],
         };
 
-        this.cons = this.cons.bind(this);
+   }
+
+    componentDidMount() {
+      this.props.meals();
     }
 
-    cons(){
-      console.log(this.props.DinerData);
-      //this.props.DinerData
+    tableData() {
+    var arr = [];
+    for (var key in this.props.data) {
+      arr.push(this.props.data[key]);
     }
+      
+      return arr;
 
+      /*arr.map((element, i) => {
+        console.log(element.name);
+      });*/
+    }
   render() {
 
     return (
         <div>
-        {this.cons()}
+
         <Row >
           <Col 
             offset={1} 
@@ -130,7 +84,7 @@ class Diner extends React.Component {
         </Row> 
         <Row>
           <Col offset={1} span={22}>        
-            <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={this.props.DinerData} onChange={onChange} />
+            <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={this.tableData()} onChange={onChange} />
           </Col>
         </Row>
       </div>
@@ -138,15 +92,15 @@ class Diner extends React.Component {
   }
 }
 
+
+
 function mapStateToProps(state) {
-  return {
-    pages: state.pages,
-    DinerData: state.DinerData,
-  };
+  const {data, loading} = state.meals.mealsData;
+  return {data, loading};
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({select: select}, dispatch)
+  return bindActionCreators ({meals: meals}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Diner);
