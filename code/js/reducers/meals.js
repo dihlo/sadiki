@@ -2,11 +2,10 @@ const INITIAL_STATE = {
 	mealsData: {
 		data: {},
 		loading: false,
-	}
+	},
 }
 
 export default function (state=INITIAL_STATE, action) {
-	console.log(action);
 	switch (action.type) {
 		case "GET_MEALS":
 		state.mealsData.loading = true;
@@ -23,4 +22,5 @@ export default function (state=INITIAL_STATE, action) {
 		return state;
 	}
 }
+
 
