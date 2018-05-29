@@ -9,12 +9,12 @@ import Titles from "./Titles";
 import { Table, Icon, Divider, Row, Col } from 'antd';
 import {meals} from '../actions/meals';
 
-
       const columns = [{
         title: 'Имя',
         dataIndex: 'name',
         onFilter: (value, record) => record.name.indexOf(value) === 0,
         sorter: (a, b) => a.name.length - b.name.length,
+        render: text => <a href="javascript:;">{text}</a>,
       }, 
       {
         title: 'Калории',
@@ -28,7 +28,18 @@ import {meals} from '../actions/meals';
         onFilter: (value, record) => record.name.indexOf(value) === 0,
         sorter: (a, b) => a.name.length - b.name.length,
       },
-
+      {
+        title: 'Редактировать',
+        dataIndex: "id",
+        width: 150,
+        render: (text, record) => (
+          <span>
+            <a href="javascript:;"><Icon type="delete" /></a>
+            <Divider type="vertical" />
+            <a href="javascript:;"><Icon type="edit" /></a>
+          </span>
+        ),
+      }  
       ];
 
       function onChange(pagination, filters, sorter) {
@@ -53,10 +64,13 @@ class Diner extends React.Component {
     tableData() {
     var arr = [];
     for (var key in this.props.data) {
+      this.props.data[key].id = this.props.data[key].id.$oid;
       arr.push(this.props.data[key]);
     }
+
+    console.log(arr);
       
-      return arr;
+    return arr;
 
       /*arr.map((element, i) => {
         console.log(element.name);
