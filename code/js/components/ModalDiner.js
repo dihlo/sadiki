@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Modal, Button } from 'antd';
 import { Form, Icon, Input} from 'antd';
 import {connect} from 'react-redux';
-import {postmeals} from '../actions/postmeals';
+import {postmeals, meals} from '../actions';
 import {bindActionCreators} from 'redux';
 
 const FormItem = Form.Item;
@@ -79,6 +79,7 @@ class ModalDiner extends React.Component {
       console.log('Name: ', values.name);
       console.log('Calorie: ', values.calorie);*/
       this.props.postmeals(values.name, values.calorie);
+      this.props.meals();
       form.resetFields();
       this.setState({ visible: false });
     });
@@ -109,7 +110,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({postmeals: postmeals}, dispatch)
+  return bindActionCreators ({postmeals: postmeals, meals: meals}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ModalDiner);

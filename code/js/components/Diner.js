@@ -6,10 +6,26 @@ import {select} from '../actions/index';
 import DinerData from '../reducers/DinerTableData';
 import ModalDiner from "./ModalDiner";
 import Titles from "./Titles";
-import { Table, Icon, Divider, Row, Col } from 'antd';
-import {meals} from '../actions/meals';
+import { Table, Icon, Divider, Row, Col, Popconfirm } from 'antd';
+import {meals} from '../actions';
+import {deletemeals} from '../actions/deletemeals';
 
-      const columns = [{
+
+function onChange(pagination, filters, sorter) {
+  console.log('params', pagination, filters, sorter);
+}
+
+let dataSource = [];
+
+class Diner extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        confirmDirty: false,
+        autoCompleteResult: [],
+
+      };
+      this.columns = [{
         title: 'Имя',
         dataIndex: 'name',
         onFilter: (value, record) => record.name.indexOf(value) === 0,
@@ -32,50 +48,28 @@ import {meals} from '../actions/meals';
         title: 'Редактировать',
         dataIndex: "id",
         width: 150,
-        render: (text, record) => (
-          <span>
-            <a href="javascript:;"><Icon type="delete" /></a>
-            <Divider type="vertical" />
-            <a href="javascript:;"><Icon type="edit" /></a>
-          </span>
-        ),
-      }  
-      ];
+        render: (text, record, index) => {
+              return (
+                <span>
+                  <a href="javascript:;"><Icon type="edit" /></a>
+                  <Divider type="vertical" />
+                  <Popconfirm title="Точно удалить?" onConfirm={() => this.onDelete(text)}>
+                     <a href="javascript:;"><Icon type="delete" /></a>
+                  </Popconfirm>
+                </span>
+              ) },
+      }];
 
-      function onChange(pagination, filters, sorter) {
-        console.log('params', pagination, filters, sorter);
-      }
-
-
-class Diner extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          confirmDirty: false,
-          autoCompleteResult: [],
-        };
-
-   }
+    }
 
     componentDidMount() {
       this.props.meals();
     }
 
-    tableData() {
-    var arr = [];
-    for (var key in this.props.data) {
-      this.props.data[key].id = this.props.data[key].id.$oid;
-      arr.push(this.props.data[key]);
+    onDelete(id) {
+      this.props.deletemeals(id);
     }
 
-    console.log(arr);
-      
-    return arr;
-
-      /*arr.map((element, i) => {
-        console.log(element.name);
-      });*/
-    }
   render() {
 
     return (
@@ -98,7 +92,7 @@ class Diner extends React.Component {
         </Row> 
         <Row>
           <Col offset={1} span={22}>        
-            <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={this.tableData()} onChange={onChange} />
+            <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
           </Col>
         </Row>
       </div>
@@ -110,11 +104,12 @@ class Diner extends React.Component {
 
 function mapStateToProps(state) {
   const {data, loading} = state.meals.mealsData;
-  return {data, loading};
+  const {deletedata, deleteloading} = state.deletemeals.mealsDelete;
+  return {data, loading, deletedata, deleteloading};
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({meals: meals}, dispatch)
+  return bindActionCreators ({meals: meals, deletemeals:deletemeals}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Diner);
