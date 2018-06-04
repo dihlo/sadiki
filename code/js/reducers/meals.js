@@ -15,8 +15,9 @@ export default function (state=INITIAL_STATE, action) {
 		state.mealsData.loading = false;
 		var arr = [];
 		for (var key in action.responseData) {
-	      action.responseData[key].id = action.responseData[key].id.$oid;
-	      arr.push(action.responseData[key]);
+			action.responseData[key].key = key;
+			action.responseData[key].id = action.responseData[key].id.$oid;
+			arr.push(action.responseData[key]);
 	    }
 	    state.mealsData.data = arr;
 		return state;
