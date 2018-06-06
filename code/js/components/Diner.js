@@ -5,48 +5,16 @@ import {connect} from 'react-redux';
 import {select} from '../actions/index';
 import DinerData from '../reducers/DinerTableData';
 import ModalDiner from "./ModalDiner";
+import EditableTextCell from "./EditableTextCell";
 import Titles from "./Titles";
-import { Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
-import {meals} from '../actions';
-import {deletemeals} from '../actions/deletemeals';
-
+import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
+import {meals, deletemeals, putmeals} from '../actions';
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
 }
 
 let dataSource = [];
-
-class EditableTextCell extends React.Component/*<any, any>*/ {
-    handleChange(e) {
-        const { value } = e.target;
-        console.log('handleChange');
-        this.props.handleChange(value);
-    }
-
-    render() {
-        const { editable, value } = this.props;
-
-        return (
-            <div>
-                { editable ?
-                    <div>
-                        <Input
-                            value={value}
-                            onChange={e => this.handleChange(e)}
-                        />
-                    </div>
-                    :
-                    <div className="editable-row-text">
-                        { value.toString() || " " }
-                    </div>
-                }
-            </div>
-        );
-    }
-}
-
-
 
 class Diner extends React.Component {
     constructor(props) {
@@ -57,6 +25,8 @@ class Diner extends React.Component {
         isEditableMap: {},
         editable: 0,
       };
+
+      this.handleSave = this.handleSave.bind(this);
 
       this.columns = [{
         title: 'Имя',
@@ -94,6 +64,7 @@ class Diner extends React.Component {
                      <a href="javascript:;"><Icon type="delete" /></a>
                   </Popconfirm>
                 </span>
+                <a htmlType="submit" onClick={() => this.handleSave(record)}><Icon type="save" /></a>
               ) },*/
       }];
 
@@ -105,13 +76,17 @@ class Diner extends React.Component {
         return (
             <div>
                 {
-                    editable == record.id ?
+                    editable == record.id ?                    
                         <span>
-                            <a onClick={() => this.handleSave(record)}>Save</a>
+                            <Button type="primary" htmlType="submit" onClick={() => this.handleSave(record)}><Icon type="save" /></Button>                           
                         </span>
                     :
                         <span>
-                            <a onClick={() => this.handleEdit(record)}>Edit</a>
+                            <a onClick={() => this.handleEdit(record)}><Icon type="edit" /></a>
+                            <Divider type="vertical" />
+                            <Popconfirm title="Точно удалить?" onConfirm={() => this.onDelete(record.id)}>
+                               <a href="javascript:;"><Icon type="delete" /></a>
+                            </Popconfirm>
                         </span>
                 }
             </div>
@@ -120,10 +95,13 @@ class Diner extends React.Component {
 
     renderTextColumn(record, index, key, text) {
        const editable = this.state.editable;
+       const keyname = key;
        return (
            <EditableTextCell
                 editable={editable == record.id}
                 value={text}
+                id = {record.id}
+                keyname = {keyname}
                 handleChange={value => this.handleChange(record, key, value)}
            />
        );
@@ -131,15 +109,30 @@ class Diner extends React.Component {
 
     handleEdit(record) {
         console.log('handleEdit');
-        console.log(record);        
-        this.setState({editable: record.id});  
+        console.log(this.props);        
+        this.setState({editable: record.id});
     }
 
-    handleSave() {
+    handleSave(record) {
         console.log('handleSave');
         // Save to API
         // APIUtils.saveRecord(record);
         this.setState({editable: 0});
+
+        /*const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
+          if (err) {
+            return;
+          }
+          console.log('Received values of form: ', values);
+          console.log('Received values of form: ', values);
+          console.log('Name: ', values.name);
+          console.log('Calorie: ', values.calorie);
+          this.props.postmeals(values.name, values.calorie);
+          this.props.meals();
+          form.resetFields();
+          this.setState({ visible: false });
+        });*/
     }
 
 
@@ -193,7 +186,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({meals: meals, deletemeals:deletemeals}, dispatch)
+  return bindActionCreators ({meals: meals, deletemeals:deletemeals, putmeals:putmeals}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Diner);

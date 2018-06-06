@@ -7,6 +7,7 @@ import ToApi from './toapi';
 import Meals from './meals';
 import PostMeals from './postmeals';
 import DeleteMeals from './deletemeals';
+import PutMeals from './putmeals';
 
 const allReducers = combineReducers ({
 	cars: CarsReducers,
@@ -17,6 +18,7 @@ const allReducers = combineReducers ({
 	meals: Meals,
 	postmeals: PostMeals,
 	deletemeals: DeleteMeals,
+	putmeals: PutMeals,
 });
 
 export default allReducers;
