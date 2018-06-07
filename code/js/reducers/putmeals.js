@@ -1,25 +1,35 @@
 const INITIAL_STATE = {
 	mealsPut: {
+		putdata: {},
+		putloading: false,	
 		payload: {},
 		payloadcalories: {},
 		payloadupdatedat: {},
+		putid: '',
 	},
 }
 export default function (state=INITIAL_STATE, action) {
 	switch (action.type) {
-		case "PUT_MEALS":
-			console.log(state.mealsPut.payloadcalories);
-			console.log(state.mealsPut.payloadupdatedat);
+		case "PUT_MEALS":		
 			switch (action.payload.keyname) {
 				case "calories":
-					state.mealsPut.payloadcalories.keyname = 'calories';
-					state.mealsPut.payloadcalories.value = action.payload.value;
+					state.mealsPut.payloadcalories.calories = action.payload.value;
 				return state;
 				case "updated_at":
-					state.mealsPut.payloadupdatedat.keyname = 'updated_at';
-					state.mealsPut.payloadupdatedat.value = action.payload.value;
+					state.mealsPut.payloadupdatedat.updated_at = action.payload.value;
 				return state;	
 			}
+		return state;
+		case "SEND_PUT_MEALS":
+			state.mealsPut.putloading = true;
+		return state;
+		case "SEND_PUT_MEALS_OK":
+			state.mealsPut.loading = false;
+			state.mealsPut.putloading = action.responseData;
+		return state;
+		case "SEND_PUT_MEALS_ERROR":
+			state.mealsPut.putloading = false;
+			state.mealsPut.putdata = action.responseData;
 		return state;
 	default:
 		return state;

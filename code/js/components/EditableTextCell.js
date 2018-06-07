@@ -25,7 +25,7 @@ class EditableTextCell extends React.Component {
         const {keyname} = this.props;
         const value = e.target.value;
 
-        console.log(this.state);
+        console.log(this.props);
 
         this.props.putmeals(value, id, keyname);
 

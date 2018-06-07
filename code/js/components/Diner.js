@@ -8,7 +8,7 @@ import ModalDiner from "./ModalDiner";
 import EditableTextCell from "./EditableTextCell";
 import Titles from "./Titles";
 import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
-import {meals, deletemeals, putmeals} from '../actions';
+import {meals, deletemeals, putmeals, sendputmeals} from '../actions';
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
@@ -78,7 +78,7 @@ class Diner extends React.Component {
                 {
                     editable == record.id ?                    
                         <span>
-                            <Button type="primary" htmlType="submit" onClick={() => this.handleSave(record)}><Icon type="save" /></Button>                           
+                            <a onClick={() => this.SendPut(record)}><Icon type="save" /></a>                           
                         </span>
                     :
                         <span>
@@ -115,29 +115,18 @@ class Diner extends React.Component {
 
     handleSave(record) {
         console.log('handleSave');
-        // Save to API
-        // APIUtils.saveRecord(record);
         this.setState({editable: 0});
-
-        /*const form = this.formRef.props.form;
-        form.validateFields((err, values) => {
-          if (err) {
-            return;
-          }
-          console.log('Received values of form: ', values);
-          console.log('Received values of form: ', values);
-          console.log('Name: ', values.name);
-          console.log('Calorie: ', values.calorie);
-          this.props.postmeals(values.name, values.calorie);
-          this.props.meals();
-          form.resetFields();
-          this.setState({ visible: false });
-        });*/
     }
 
 
     componentDidMount() {
       this.props.meals();
+    }
+
+    SendPut(record) {
+      let sendobj = Object.assign(record, this.props.payloadcalories, this.props.payloadupdatedat);
+      this.props.sendputmeals(sendobj); 
+      this.setState({editable: 0});     
     }
 
     onDelete(id) {
@@ -182,11 +171,12 @@ class Diner extends React.Component {
 function mapStateToProps(state) {
   const {data, loading} = state.meals.mealsData;
   const {deletedata, deleteloading} = state.deletemeals.mealsDelete;
-  return {data, loading, deletedata, deleteloading};
+  const {putdata, putloading, payload, payloadcalories, payloadupdatedat}=state.putmeals.mealsPut;
+  return {data, loading, deletedata, deleteloading, putdata, putloading, payload, payloadcalories, payloadupdatedat};
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({meals: meals, deletemeals:deletemeals, putmeals:putmeals}, dispatch)
+  return bindActionCreators ({meals: meals, deletemeals:deletemeals, putmeals:putmeals, sendputmeals:sendputmeals}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Diner);

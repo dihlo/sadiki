@@ -71,19 +71,15 @@ class ModalDiner extends React.Component {
 
   handleCreate () {
     const form = this.formRef.props.form;
-    /*form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (err) {
         return;
       }
-
-     console.log('Received values of form: ', values);
-      console.log('Name: ', values.name);
-      console.log('Calorie: ', values.calorie);
       this.props.postmeals(values.name, values.calorie);
       this.props.meals();
       form.resetFields();
       this.setState({ visible: false });
-    });*/
+    });
   }
 
   saveFormRef (formRef) {
