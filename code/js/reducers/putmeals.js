@@ -3,9 +3,6 @@ const INITIAL_STATE = {
 		putdata: {},
 		putloading: false,	
 		payload: {},
-		payloadcalories: {},
-		payloadupdatedat: {},
-		putid: '',
 	},
 }
 export default function (state=INITIAL_STATE, action) {
@@ -13,11 +10,23 @@ export default function (state=INITIAL_STATE, action) {
 		case "PUT_MEALS":		
 			switch (action.payload.keyname) {
 				case "calories":
-					state.mealsPut.payloadcalories.calories = action.payload.value;
+					state.mealsPut.payload.calories = action.payload.value;
 				return state;
 				case "updated_at":
-					state.mealsPut.payloadupdatedat.updated_at = action.payload.value;
+					state.mealsPut.payload.updated_at = action.payload.value;
+				return state;
+				case "name":
+					state.mealsPut.payload.name = action.payload.value;
 				return state;	
+				case "description":
+					state.mealsPut.payload.description = action.payload.value;
+				return state;
+				case "meal_date":
+					state.mealsPut.payload.meal_date = action.payload.value;
+				return state;
+				case "weight":
+					state.mealsPut.payload.weight = action.payload.value;
+				return state;										
 			}
 		return state;
 		case "SEND_PUT_MEALS":

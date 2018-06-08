@@ -31,10 +31,25 @@ const CollectionCreateForm = Form.create()(
               )}
             </FormItem>
             <FormItem label="Калории">
-              {getFieldDecorator('calorie', {
+              {getFieldDecorator('calories', {
                 rules: [{ required: true, message: 'Поле обезательное, укажите калорийность' }],
               })(<Input type="textarea" />)}
             </FormItem>
+            <FormItem label="Описание">
+              {getFieldDecorator('description', {
+                rules: [{ required: true, message: 'Поле обезательное, укажите описание' }],
+              })(<Input type="textarea" />)}
+            </FormItem>
+            <FormItem label="Дата">
+              {getFieldDecorator('meal_date', {
+                rules: [{ required: true, message: 'Поле обезательное, укажите дата' }],
+              })(<Input type="textarea" />)}
+            </FormItem>
+            <FormItem label="Вес">
+              {getFieldDecorator('weight', {
+                rules: [{ required: true, message: 'Поле обезательное, укажите вес' }],
+              })(<Input type="textarea" />)}
+            </FormItem>              
           </Form>
         </Modal>
       );
@@ -71,11 +86,13 @@ class ModalDiner extends React.Component {
 
   handleCreate () {
     const form = this.formRef.props.form;
+    console.log('form');
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      this.props.postmeals(values.name, values.calorie);
+      console.log(values);
+      this.props.postmeals(values);
       this.props.meals();
       form.resetFields();
       this.setState({ visible: false });

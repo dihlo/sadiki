@@ -67,7 +67,7 @@ renderPage (key) {
 }
 
 function mapStateToProps(state) {
-	const  {pageID}	 = state.active;
+	const  {pageID}	 = state.pagesselect;
 	return {
 		pageID
 	};

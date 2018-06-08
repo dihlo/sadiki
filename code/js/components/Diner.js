@@ -31,25 +31,38 @@ class Diner extends React.Component {
       this.columns = [{
         title: 'Имя',
         dataIndex: 'name',
-        onFilter: (value, record) => record.name.indexOf(value) === 0,
-        sorter: (a, b) => a.name.length - b.name.length,
-        render: text => <a href="javascript:;">{text}</a>,
+        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
+        sorter: (a, b) => a.name.length - b.name.length,*/
+        render: (text, record, index) => this.renderTextColumn(record, index, "name", text),
       }, 
       {
         title: 'Калории',
         dataIndex: 'calories',
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a.age - b.age,
+        sorter: (a, b) => a.calories - b.calories,
         render: (text, record, index) => this.renderTextColumn(record, index, "calories", text),
+      },
+      {
+        title: 'Описание',
+        dataIndex: 'description',
+        render: (text, record, index) => this.renderTextColumn(record, index, "description", text),
       }, 
       { 
         title: 'Дата',
-        dataIndex: 'updated_at',
+        dataIndex: 'meal_date',
         editable: false,
-        onFilter: (value, record) => record.name.indexOf(value) === 0,
-        sorter: (a, b) => a.name.length - b.name.length,
-        render: (text, record, index) => this.renderTextColumn(record, index, "updated_at", text),
+        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
+        sorter: (a, b) => a.name.length - b.name.length,*/
+        render: (text, record, index) => this.renderTextColumn(record, index, "meal_date", text),
       },
+      { 
+        title: 'Вес',
+        dataIndex: 'weight',
+        editable: false,
+        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
+        sorter: (a, b) => a.name.length - b.name.length,*/
+        render: (text, record, index) => this.renderTextColumn(record, index, "weight", text),
+      },      
       {
         title: 'Редактировать',
         dataIndex: "id",
@@ -124,7 +137,7 @@ class Diner extends React.Component {
     }
 
     SendPut(record) {
-      let sendobj = Object.assign(record, this.props.payloadcalories, this.props.payloadupdatedat);
+      let sendobj = Object.assign(record, this.props.payload);
       this.props.sendputmeals(sendobj); 
       this.setState({editable: 0});     
     }

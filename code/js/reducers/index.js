@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import CarsReducers from './car';
-import ActiveCar from './car-active';
+import Pagesselect from './pagesselect';
 import Pages from './pages';
 import DinerData from './DinerTableData';
 import ToApi from './toapi';
@@ -11,7 +11,7 @@ import PutMeals from './putmeals';
 
 const allReducers = combineReducers ({
 	cars: CarsReducers,
-	active: ActiveCar,
+	pagesselect: Pagesselect,
 	pages: Pages,
 	DinerData: DinerData,
 	auth: ToApi,

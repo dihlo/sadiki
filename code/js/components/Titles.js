@@ -28,7 +28,7 @@ export class Titles extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const  {pageID}  = state.active;
+  const  {pageID}  = state.pagesselect;
   return {
     pageID,
     pages: state.pages

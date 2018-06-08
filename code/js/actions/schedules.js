@@ -1,28 +1,27 @@
 import axios from 'axios';
 
-export const postmeals = (data) => {
-	console.log('Я в то апи');
+export const schedules = () => {
+	console.log('Я в schedules');
 	return (dispatch) => {
 		axios.defaults.headers.common = {};
 		dispatch({
-			type: "POST_MEALS"
+			type: "GET_SCHEDULES"
 		});
 
 		axios({
-		  method:'post',
-		  url:'http://saddev.s-vfu.ru/meals',
-		  data: data
+		  method:'get',
+		  url:'http://saddev.s-vfu.ru/schedules',
 		})
 		  .then(function(response) {
 		  	console.log(response);
 		   	dispatch({
-				type: "POST_MEALS_OK",
+				type: "GET_SCHEDULES_OK",
 				responseData: response.data,
 			});
 		  })
 		  .catch(function (error) {
 		   	dispatch({
-				type: "POST_MEALS_ERROR",
+				type: "GET_SCHEDULES_ERROR",
 				responseData: "error_meals",
 			});		  	
 		});
