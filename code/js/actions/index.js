@@ -4,3 +4,6 @@ export * from './postmeals';
 export * from './putmeals';
 export * from './pagesselect';
 export * from './schedules';
+export * from './postschedules';
+export * from './putschedules';
+export * from './deleteschedules';

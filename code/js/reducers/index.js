@@ -8,6 +8,10 @@ import Meals from './meals';
 import PostMeals from './postmeals';
 import DeleteMeals from './deletemeals';
 import PutMeals from './putmeals';
+import Schedules from './schedules';
+import PostSchedules from './postschedules';
+import PutSchedules from './putschedules';
+import DeleteSchedules from './deleteschedules';
 
 const allReducers = combineReducers ({
 	cars: CarsReducers,
@@ -19,6 +23,10 @@ const allReducers = combineReducers ({
 	postmeals: PostMeals,
 	deletemeals: DeleteMeals,
 	putmeals: PutMeals,
+	schedules: Schedules,
+	postschedules: PostSchedules,
+	putschedules: PutSchedules,
+	deleteschedules: DeleteSchedules,
 });
 
 export default allReducers;
