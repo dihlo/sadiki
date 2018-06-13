@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import CarsList from "../containers/car-list";
 import Details from "../containers/details";
 import Page from "../containers/renderPage";
-import Pages from "../containers/Pages";
+import Pages from "../containers/pages";
 import { DatePicker, Layout} from 'antd';
 import MySider from "./Sider";
 import MyHeader from "./MyHeader";
