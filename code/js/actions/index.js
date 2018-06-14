@@ -7,3 +7,7 @@ export * from './schedules';
 export * from './postschedules';
 export * from './putschedules';
 export * from './deleteschedules';
+export * from './news';
+export * from './postnews';
+export * from './putnews';
+export * from './deletenews';

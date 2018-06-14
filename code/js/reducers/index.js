@@ -12,6 +12,10 @@ import Schedules from './schedules';
 import PostSchedules from './postschedules';
 import PutSchedules from './putschedules';
 import DeleteSchedules from './deleteschedules';
+import News from './news';
+import PostNews from './postnews';
+import PutNews from './putnews';
+import DeleteNews from './deletenews';
 
 const allReducers = combineReducers ({
 	cars: CarsReducers,
@@ -27,6 +31,10 @@ const allReducers = combineReducers ({
 	postschedules: PostSchedules,
 	putschedules: PutSchedules,
 	deleteschedules: DeleteSchedules,
+	news: News,
+	postnews: PostNews,
+	putnews: PutNews,
+	deletenews: DeleteNews,	
 });
 
 export default allReducers;
