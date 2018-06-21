@@ -5,6 +5,9 @@ import { Form, Icon, Input} from 'antd';
 import {connect} from 'react-redux';
 import {postnews, news} from '../actions';
 import {bindActionCreators} from 'redux';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const FormItem = Form.Item;
 
@@ -13,6 +16,8 @@ const CollectionCreateForm = Form.create()(
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
+      //const { editorState } = this.state;
+      console.log( this.state);
       return (
         <Modal
           visible={visible}
@@ -34,7 +39,15 @@ const CollectionCreateForm = Form.create()(
               {getFieldDecorator('body', {
                 rules: [{ required: true, message: 'Поле обезательное, необходим текст новости' }],
               })(
-                <Input type="textarea"/>
+              <div>
+                <Editor
+                  wrapperClassName="wrapper-class"
+                  editorClassName="editor-class"
+                  toolbarClassName="toolbar-class"
+                />
+                <textarea disabled/>   
+              </div>
+
               )}
             </FormItem>                       
           </Form>
@@ -53,6 +66,7 @@ class ModalNews extends React.Component {
           visible: false,
           confirmLoading: false,
           loading: false,
+          editorState: EditorState.createEmpty(), 
         };
 
       this.showModal = this.showModal.bind(this);
@@ -61,7 +75,14 @@ class ModalNews extends React.Component {
       this.saveFormRef = this.saveFormRef.bind(this);
   }
 
+  /*onEditorStateChange (editorState) {
+    this.setState({
+      editorState,
+    });
+  };*/
+
   showModal() {
+    console.log(this.state);
     this.setState({
       visible: true,
     });
