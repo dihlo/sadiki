@@ -26,6 +26,11 @@ export default function() {
 			id: 5,
 			name: "Пользователи",
 			icon: "user",
-		},								
+		},
+		{
+			id: 6,
+			name: "Камеры",
+			icon: "camera-o",
+		},											
 	]
 }
