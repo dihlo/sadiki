@@ -6,17 +6,41 @@ import {connect} from 'react-redux';
 import {postnews, news} from '../actions';
 import {bindActionCreators} from 'redux';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
+import { Editor, EditorInput } from 'react-draft-wysiwyg';
+import draftToMarkdown from 'draftjs-to-markdown';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const FormItem = Form.Item;
 
 const CollectionCreateForm = Form.create()(
   class extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        editorState: EditorState.createEmpty(),
+      };
+
+      this.onEditorStateChange = this.onEditorStateChange.bind(this);
+
+    }
+
+    onEditorStateChange (editorState) {
+      this.setState({
+        editorState,
+      });
+
+      let text = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
+
+      this.props.form.setFieldsValue({
+        body: text,
+      });
+    };
+
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
-      //const { editorState } = this.state;
+      const { editorState } = this.state;
       console.log( this.state);
       return (
         <Modal
@@ -37,17 +61,19 @@ const CollectionCreateForm = Form.create()(
             </FormItem>
             <FormItem label="Текст новости">
               {getFieldDecorator('body', {
-                rules: [{ required: true, message: 'Поле обезательное, необходим текст новости' }],
+                rules: [{ required: true,
+                          message: 'Поле обезательное, необходим текст новости' 
+                        },
+                        ],
               })(
               <div>
                 <Editor
-                  wrapperClassName="wrapper-class"
-                  editorClassName="editor-class"
-                  toolbarClassName="toolbar-class"
+                  wrapperClassName="demo-wrapper"
+                  editorClassName="demo-editor"
+                  onEditorStateChange={this.onEditorStateChange}
                 />
-                <textarea disabled/>   
+                <Input hidden/>  
               </div>
-
               )}
             </FormItem>                       
           </Form>
@@ -89,6 +115,7 @@ class ModalNews extends React.Component {
   }
 
   handleCancel () {
+    console.log(this.state);
     this.setState({ visible: false });
   }
 
@@ -99,11 +126,11 @@ class ModalNews extends React.Component {
       if (err) {
         return;
       }
-      console.log(this.props);
+      console.log(this.state);
       this.props.postnews(values);
       this.props.news();
       form.resetFields();
-      this.setState({ visible: false });
+      this.setState({ visible: false});
     });
   }
 
