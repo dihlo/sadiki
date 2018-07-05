@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {select} from '../actions/index';
 import DinerData from '../reducers/DinerTableData';
 import ModalSchedules from "./ModalSchedule";
-import EditableTextCell from "./EditableTextCell";
+import EditableTextCellSchedule from "./EditableTextCellSchedule";
 import Titles from "./Titles";
 import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
 import {meals, deleteschedules, putschedules, sendputschedules, schedules} from '../actions';
@@ -110,7 +110,7 @@ class Schedule extends React.Component {
        const editable = this.state.editableSchedule;
        const keyname = key;
        return (
-           <EditableTextCell
+           <EditableTextCellSchedule
                 editable={editable == record.id}
                 value={text}
                 id = {record.id}
@@ -123,7 +123,7 @@ class Schedule extends React.Component {
     handleEdit(record) {
         console.log('handleEdit');
         console.log(this.props);        
-        this.setState({editable: record.id});
+        this.setState({editableSchedule: record.id});
     }
 
     handleSave(record) {

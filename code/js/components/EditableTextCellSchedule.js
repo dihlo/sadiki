@@ -6,11 +6,11 @@ import {select} from '../actions/index';
 import DinerData from '../reducers/DinerTableData';
 import Titles from "./Titles";
 import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
-import {putmeals} from '../actions';
+import {putschedules} from '../actions';
 
 const FormItem = Form.Item;
 
-class EditableTextCell extends React.Component {
+class EditableTextCellSchedule extends React.Component {
     constructor(props) {
     super(props);
 
@@ -24,7 +24,7 @@ class EditableTextCell extends React.Component {
         const {keyname} = this.props;
         const value = e.target.value;
 
-        this.props.putmeals(value, id, keyname);
+        this.props.putschedules(value, id, keyname);
 
         this.setState({value: e.target.value});
     }
@@ -63,8 +63,8 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({putmeals:putmeals}, dispatch)
+  return bindActionCreators ({putschedules:putschedules}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(EditableTextCell);
+export default connect(mapStateToProps, matchDispatchToProps)(EditableTextCellSchedule);
 
