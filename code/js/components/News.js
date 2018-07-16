@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index';
 import DinerData from '../reducers/DinerTableData';
-import ModalNews from "./ModalNews";
+import NewsAdd from "./NewsAdd";
 import EditableTextCellNews from "./EditableTextCellNews";
 import Titles from "./Titles";
 import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
@@ -20,6 +20,7 @@ class News extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        isAddNews: false,
         confirmDirty: false,
         autoCompleteResult: [],
         isEditableMap: {},
@@ -27,6 +28,8 @@ class News extends React.Component {
       };
 
       this.handleSave = this.handleSave.bind(this);
+      this.onClickAddNews = this.onClickAddNews.bind(this);
+      this.onCloseAddNews = this.onCloseAddNews.bind(this);
 
       this.columns = [{
         title: 'Заголовок',
@@ -104,6 +107,43 @@ class News extends React.Component {
        );
     }
 
+    renderNewsPage(props) {
+      this.tableData();
+      return (
+          <div>
+          <Row >
+            <Col 
+              offset={1} 
+              span={11}
+              style={{ paddingTop: 20, paddingBottom: 20}}
+            >
+              <Titles/>
+            </Col>
+            <Col
+              span={11}
+              style={{textAlign: 'right'}}
+            >
+              <Button type="primary" onClick={this.onClickAddNews}>Добавить</Button>
+            </Col> 
+          </Row> 
+          <Row>
+            <Col offset={1} span={22}>        
+              <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
+            </Col>
+          </Row>
+        </div>
+      );  
+    }
+
+    renderNewsAdd(props) {
+      this.tableData();
+      return (
+          <div>
+            <NewsAdd onCloseAddNews={() => this.onCloseAddNews()}/>
+        </div>
+      );  
+    }
+
     handleEdit(record) {
         console.log('handleEdit');
         console.log(this.props);        
@@ -135,31 +175,26 @@ class News extends React.Component {
       console.log(this.props.data);
     }
 
+    onClickAddNews() {
+      console.log('onClickAddNews');
+      this.setState({isAddNews: true});
+    }
+
+    onCloseAddNews() {
+      console.log('onCloseAddNews');
+      this.setState({isAddNews: false});
+    }
+
   render() {
     this.tableData();
+    let isAddNews = this.state.isAddNews;
     return (
-        <div>
-
-        <Row >
-          <Col 
-            offset={1} 
-            span={11}
-            style={{ paddingTop: 20, paddingBottom: 20}}
-          >
-            <Titles/>            
-          </Col>
-          <Col
-            span={11}
-            style={{textAlign: 'right'}}
-          >
-            <ModalNews/>            
-          </Col> 
-        </Row> 
-        <Row>
-          <Col offset={1} span={22}>        
-            <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
-          </Col>
-        </Row>
+      <div>
+        {isAddNews ? (
+          this.renderNewsAdd()
+          ) : (
+          this.renderNewsPage()
+          )}
       </div>
     );
   }

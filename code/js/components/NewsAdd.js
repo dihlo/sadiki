@@ -22,7 +22,6 @@ const CollectionCreateForm = Form.create()(
       };
 
       this.onEditorStateChange = this.onEditorStateChange.bind(this);
-      this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
 
     }
 
@@ -38,53 +37,12 @@ const CollectionCreateForm = Form.create()(
       });
     };
 
-    uploadImageCallBack(file) {
-      return new Promise(
-        (resolve, reject) => {
-          const xhr = new XMLHttpRequest();
-          //xhr.open('POST', 'http://saddev.s-vfu.ru/news/image');
-          xhr.open('POST', 'https://api.imgur.com/3/image');
-          xhr.setRequestHeader('Authorization', 'Client-ID 3b20c83fd4460bc');
-          const data = new FormData();
-          //data.append('file', file);
-          data.append('image', file);
-          xhr.send(data);
-          /*xhr.addEventListener('load', () => {
-            console.log('load');
-            const response = JSON.parse(xhr.responseText);
-            const linkimg = 'http://saddev.s-vfu.ru'+ response.url;
-            console.log(response);
-            console.log(linkimg);
-            resolve({data: {link: linkimg}})
-          });*/
-          xhr.addEventListener('load', () => {
-            const response = JSON.parse(xhr.responseText);
-            console.log(response);
-            resolve(response);
-          });          
-          xhr.addEventListener('error', () => {
-            console.log('error');
-            const error = JSON.parse(xhr.responseText);
-            reject(error);
-          });
-        }
-      );
-    }
-
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
       const { editorState } = this.state;
       console.log( this.state);
       return (
-        <Modal
-          visible={visible}
-          title="Добавление приема расписания"
-          okText="Добавить"
-          cancelText="Отмена"
-          onCancel={onCancel}
-          onOk={onCreate}
-        >
           <Form layout="vertical">
             <FormItem label="Заголовок">
               {getFieldDecorator('title', {
@@ -105,28 +63,24 @@ const CollectionCreateForm = Form.create()(
                   wrapperClassName="demo-wrapper"
                   editorClassName="demo-editor"
                   onEditorStateChange={this.onEditorStateChange}
-                  toolbar={{
-                    image: { uploadCallback: this.uploadImageCallBack, alt: {present: true, mandatory: true } },
-                  }}                  
                 />
                 <Input hidden/>  
               </div>
               )}
             </FormItem>                       
           </Form>
-        </Modal>
       );
     }
   }
 );
 
-class ModalNews extends React.Component {
+class NewsAdd extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
           ModalText: 'Content of the modal',
-          visible: false,
+          visible: true,
           confirmLoading: false,
           loading: false,
           editorState: EditorState.createEmpty(), 
@@ -146,14 +100,13 @@ class ModalNews extends React.Component {
 
   showModal() {
     console.log(this.state);
-    this.setState({
-      visible: true,
-    });
+    //this.setState({visible: true,});
   }
 
   handleCancel () {
     console.log(this.state);
-    this.setState({ visible: false });
+    //this.setState({ visible: false });
+    this.props.isAddNews(false)
   }
 
   handleCreate () {
@@ -167,7 +120,8 @@ class ModalNews extends React.Component {
       this.props.postnews(values);
       this.props.news();
       form.resetFields();
-      this.setState({ visible: false});
+      //this.setState({ visible: false});
+      this.props.onCloseAddNews();
     });
   }
 
@@ -178,7 +132,9 @@ class ModalNews extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>Добавить</Button>
+        <Button type="primary" onClick={this.handleCreate}>Сохранить</Button>
+        &nbsp;
+        <Button type="primary" onClick={this.props.onCloseAddNews}>Отменить</Button>
         <CollectionCreateForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
@@ -199,4 +155,4 @@ function matchDispatchToProps (dispatch) {
   return bindActionCreators ({postnews: postnews, news: news}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(ModalNews);
+export default connect(mapStateToProps, matchDispatchToProps)(NewsAdd);
