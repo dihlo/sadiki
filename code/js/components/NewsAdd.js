@@ -22,6 +22,7 @@ const CollectionCreateForm = Form.create()(
       };
 
       this.onEditorStateChange = this.onEditorStateChange.bind(this);
+      this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
 
     }
 
@@ -36,6 +37,40 @@ const CollectionCreateForm = Form.create()(
         body: text,
       });
     };
+
+    uploadImageCallBack(file) {
+      return new Promise(
+        (resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          //xhr.open('POST', 'http://saddev.s-vfu.ru/news/image');
+          xhr.open('POST', 'https://api.imgur.com/3/image');
+          xhr.setRequestHeader('Authorization', 'Client-ID 3b20c83fd4460bc');
+          const data = new FormData();
+          //data.append('file', file);
+          data.append('image', file);
+          xhr.send(data);
+          /*xhr.addEventListener('load', () => {
+            console.log('load');
+            const response = JSON.parse(xhr.responseText);
+            const linkimg = 'http://saddev.s-vfu.ru'+ response.url;
+            console.log(response);
+            console.log(linkimg);
+            resolve({data: {link: linkimg}})
+          });*/
+          xhr.addEventListener('load', () => {
+            const response = JSON.parse(xhr.responseText);
+            console.log(response);
+            resolve(response);
+          });          
+          xhr.addEventListener('error', () => {
+            console.log('error');
+            const error = JSON.parse(xhr.responseText);
+            reject(error);
+          });
+        }
+      );
+    }
+
 
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
@@ -63,6 +98,9 @@ const CollectionCreateForm = Form.create()(
                   wrapperClassName="demo-wrapper"
                   editorClassName="demo-editor"
                   onEditorStateChange={this.onEditorStateChange}
+                  toolbar={{
+                    image: { uploadCallback: this.uploadImageCallBack, alt: {present: true, mandatory: true } },
+                  }}  
                 />
                 <Input hidden/>  
               </div>
