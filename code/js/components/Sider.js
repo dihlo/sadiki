@@ -9,15 +9,16 @@ import { Link, browserHistory  } from 'react-router-dom';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-import PropTypes from 'prop-types';
 
 class MySider extends React.Component {
-  getInitialState() {
-        return {
-          current: this.props.pathname
-        };
+  constructor(props) {
+    super(props);
 
+    //получаю выбранную страницу из URL (это нужно когда страница открывается по прямой ссылке)
+    if(location.pathname != '/')
+      this.props.select(this.props.pages.find((e) => e.url === location.pathname).id.toString());
   }
+
   onClick({ item, key, keyPath }) {
     this.props.select(key);
   }
@@ -25,22 +26,20 @@ class MySider extends React.Component {
   showlist() {
     return this.props.pages.map((pages) => {
       return (
-        <Menu.Item key={pages.id}><Link to={'/'+pages.url}><span><Icon type={pages.icon} /><span>{pages.name}</span></span></Link></Menu.Item>
+        <Menu.Item key={pages.id}><Link to={pages.url}><span><Icon type={pages.icon} /><span>{pages.name}</span></span></Link></Menu.Item>
       );
     });
   }
 
   render() {
+console.log('Sider '+this.props.pageID);
     return (
       <Row>
         <Col span={24}>
           <Menu
             onClick={this.onClick.bind(this)} 
-            //defaultSelectedKeys={['1']}
-            selectedKeys={[this.props.pathname]}
-            /*defaultOpenKeys={['sub1']}*/
-            mode="inline"
-          > 
+            selectedKeys={[this.props.pageID]}
+            mode="inline"> 
             {this.showlist()}
           </Menu>
         </Col>
@@ -50,8 +49,10 @@ class MySider extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const  {pageID}  = state.pagesselect;
   return {
-    pages: state.pages
+    pageID,
+    pages: state.pages,
   };
 }
 

@@ -23,30 +23,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 class Webpage extends React.Component {
 
-/*renderPage (key) {
-	switch (key) {
-		case "1":
-		return <Diner/>;
-		break;
-		case "2":
-		return <Schedule/>;
-		break;
-		case "3":
-		return <News/>;
-		break;
-		case "4":
-		return <Teamplate/>;
-		break;
-		case "5":
-		return <Users/>;
-		break;
-	default:
-		return <Diner/>;
-	}
-}*/
-
-
- render() {
+render() {
     return (
 	<div>
 	    <Layout>
@@ -66,7 +43,6 @@ class Webpage extends React.Component {
 						<Route path='/user' component={Users}/>
 						<Route path='/camera' component={Diner}/>
 					</Switch>
-			    	{/*this.renderPage(this.props.pageID)*/}
 			    </Col>	
 			</Row>	
 			</Layout>

@@ -1,9 +1,8 @@
 const INITIAL_STATE = {
-	pageID: 1,
+	pageID: '1',
 }
 
 export default function (state=INITIAL_STATE, action) {
-	console.log(action);
 	switch (action.type) {
 		case "PAGE_SELECTED":
 		state.pageID = action.payload;
