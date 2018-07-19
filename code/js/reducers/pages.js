@@ -4,39 +4,39 @@ export default function() {
 			id: 1,
 			name: "Обеды",
 			icon: "coffee",
-			url: "diner",
+			url: "/diner",
 		},
 
 		{
 			id: 2,
 			name: "Расписание",
 			icon: "schedule",
-			url: "schedule",
+			url: "/schedule",
 		},
 
 		{
 			id: 3,
 			name: "Новости",
 			icon: "solution",
-			url: "news",
+			url: "/news",
 		},
 		{
 			id: 4,
 			name: "Шаблоны",
 			icon: "fork",
-			url: "template",
+			url: "/template",
 		},
 		{
 			id: 5,
 			name: "Пользователи",
 			icon: "user",
-			url: "user",
+			url: "/user",
 		},
 		{
 			id: 6,
 			name: "Камеры",
 			icon: "camera-o",
-			url: "camera",
+			url: "/camera",
 		},											
 	]
 }
