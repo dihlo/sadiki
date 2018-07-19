@@ -15,7 +15,7 @@ export class Titles extends React.Component {
   }
 
   title() {
-    return this.props.pages[this.props.pageID - 1].name;
+    return this.props.pages[this.props.pageID-1].name;
   }
 
   render() {

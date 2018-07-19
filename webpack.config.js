@@ -8,6 +8,7 @@ module.exports = {
     devServer: {
         inline: true,
         contentBase: './src',
+		historyApiFallback: true,
         port: 3000
     },
     devtool: 'cheap-module-eval-source-map',
@@ -74,7 +75,8 @@ module.exports = {
     },
     output: {
         path: 'src',
-        filename: 'js/bundle.min.js'
+        filename: 'js/bundle.min.js',
+		publicPath: '/'
     },
 
     plugins: [
