@@ -5,13 +5,18 @@ import { createStore, applyMiddleware } from 'redux';
 import allReducers from './reducers';
 import WebPage from './components/WebPage';
 import thunk from 'redux-thunk';
+import { Router } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 const store = createStore (allReducers, applyMiddleware(thunk));
+const customHistory = createBrowserHistory();
 
 ReactDOM.render(
-		<Provider store={store}>
+	<Provider store={store}>
+		<Router history={customHistory}>
 			<WebPage/>
-		</Provider>
+		</Router>
+	</Provider>
 ,
   document.getElementById('fieldToShow')
 );
