@@ -25,7 +25,6 @@ class News extends React.Component {
         autoCompleteResult: [],
         isEditableMap: {},
         editable: 0,
-        pageID: 3,
       };
 
       this.handleSave = this.handleSave.bind(this);
