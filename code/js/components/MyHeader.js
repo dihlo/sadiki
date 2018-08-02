@@ -28,21 +28,21 @@ class MyHeader extends React.Component {
             current: e.key,
           });
         }*/
-          <Menu
-            style={{padding: '12px 0', }}
+          <div
+            style={{padding: '12px 0', backgroundColor: 'white', lineHeight: '46px', borderBottom: '1px solid #e8e8e8' }}
             onClick={this.handleClick}
             mode="horizontal"
           >
             <Row type="flex">
-              <Col span={4}>
+              <Col span={8}>
                 <Avatar style={{margin: '0 24px', backgroundColor: '#87d068' }} icon="user" />
-                <span>Дорофей</span>
+                <span>Александр Саввинов</span>
               </Col>
-              <Col offset={18} span={2}>
+              <Col offset={14} span={2}>
                 <Button onClick={()=>{this.props.toapi()}/*this.login.bind(this)*/} style={{backgroundColor: '#87d068', color: '#fff' }}>Выход</Button>
               </Col>
             </Row>  
-          </Menu>
+          </div>
     );
   }
 }
