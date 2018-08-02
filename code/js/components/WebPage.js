@@ -28,12 +28,12 @@ render() {
 	<div>
 	    <Layout>
 	      	<MyHeader />
-			<Layout style={{background: '#fff', width: '256 px;' }}>
+			<Layout style={{ background: '#fff' }}>
 				<Row>
 			  	<Col span={4}>
 			    	<MySider />
 			    </Col>
-			    <Col span={20}>
+			    <Col span={20} style={{ paddingTop: '20px' }}>
 					<Switch>
 						<Route exact path='/' component={Diner}/>
 						<Route path='/diner' component={Diner}/>

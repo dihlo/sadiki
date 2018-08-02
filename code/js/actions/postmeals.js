@@ -14,11 +14,11 @@ export const postmeals = (data) => {
 		  data: data
 		})
 		  .then(function(response) {
-		  	console.log(response);
-		   	dispatch({
-				type: "POST_MEALS_OK",
-				responseData: response.data,
-			});
+				console.log(response);
+					dispatch({
+					type: "POST_MEALS_OK",
+					responseData: response.data,
+				});
 		  })
 		  .catch(function (error) {
 		   	dispatch({

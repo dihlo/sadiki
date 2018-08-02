@@ -1,20 +1,15 @@
-import React, {Component} from 'react';
-import ReactDOM from "react-dom";
+import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {select} from '../actions/index';
-import DinerData from '../reducers/DinerTableData';
 import ModalSchedules from "./ModalSchedule";
 import EditableTextCellSchedule from "./EditableTextCellSchedule";
 import Titles from "./Titles";
-import { Button, Form, Table, Icon, Divider, Input, Row, Col, Popconfirm } from 'antd';
-import {meals, deleteschedules, putschedules, sendputschedules, schedules} from '../actions';
+import { Table, Icon, Divider, Row, Col, Popconfirm } from 'antd';
+import {schedules, deleteschedules, putschedules, sendputschedules} from '../actions';
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
 }
-
-let dataSource = [];
 
 class Schedule extends React.Component {
     constructor(props) {
@@ -31,8 +26,6 @@ class Schedule extends React.Component {
       this.columns = [{
         title: 'Имя',
         dataIndex: 'name',
-        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
-        sorter: (a, b) => a.name.length - b.name.length,*/
         render: (text, record, index) => this.renderTextColumn(record, index, "name", text),
       }, 
       {
@@ -51,16 +44,12 @@ class Schedule extends React.Component {
         title: 'Дата',
         dataIndex: 'meal_date',
         editable: false,
-        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
-        sorter: (a, b) => a.name.length - b.name.length,*/
         render: (text, record, index) => this.renderTextColumn(record, index, "meal_date", text),
       },
       { 
         title: 'Вес',
         dataIndex: 'weight',
         editable: false,
-        /*onFilter: (value, record) => record.name.indexOf(value) === 0,
-        sorter: (a, b) => a.name.length - b.name.length,*/
         render: (text, record, index) => this.renderTextColumn(record, index, "weight", text),
       },      
       {
@@ -68,17 +57,6 @@ class Schedule extends React.Component {
         dataIndex: "id",
         width: 150,
         render: (text, record, index) => this.renderActionColumn(record),
-        /*render: (text, record, index) => {
-              return (
-                <span>
-                  <a href="javascript:;"><Icon type="edit" /></a>
-                  <Divider type="vertical" />
-                  <Popconfirm title="Точно удалить?" onConfirm={() => this.onDelete(text)}>
-                     <a href="javascript:;"><Icon type="delete" /></a>
-                  </Popconfirm>
-                </span>
-                <a htmlType="submit" onClick={() => this.handleSave(record)}><Icon type="save" /></a>
-              ) },*/
       }];
 
     }
@@ -146,35 +124,29 @@ class Schedule extends React.Component {
       this.props.deleteschedules(id);
     }
 
-    tableData() {
-      console.log(this.props.data);
-    }
-
   render() {
-    this.tableData();
     return (
         <div>
-
-        <Row >
-          <Col 
-            offset={1} 
-            span={11}
-            style={{ paddingTop: 20, paddingBottom: 20}}
-          >
-            <Titles/>            
-          </Col>
-          <Col
-            span={11}
-            style={{textAlign: 'right'}}
-          >
-            <ModalSchedules />            
-          </Col> 
-        </Row> 
-        <Row>
-          <Col offset={1} span={22}>        
-            <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
-          </Col>
-        </Row>
+            <Row >
+                <Col 
+                    offset={1} 
+                    span={11}
+                    style={{ paddingTop: 20, paddingBottom: 20}}
+                >
+                    <Titles/>            
+                </Col>
+                <Col
+                    span={11}
+                    style={{textAlign: 'right'}}
+                >
+                    <ModalSchedules />            
+                </Col> 
+            </Row> 
+            <Row>
+                <Col offset={1} span={22}>        
+                    <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
+                </Col>
+            </Row>
       </div>
     );
   }
@@ -190,7 +162,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({ deleteschedules:deleteschedules, putschedules:putschedules, sendputschedules:sendputschedules, schedules: schedules}, dispatch)
+  return bindActionCreators ({ schedules: schedules, deleteschedules:deleteschedules, putschedules:putschedules, sendputschedules:sendputschedules}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Schedule);
