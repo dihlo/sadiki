@@ -156,7 +156,6 @@ class NewsAdd extends React.Component {
       }
       console.log(this.state);
       this.props.postnews(values);
-      this.props.news();
       form.resetFields();
       //this.setState({ visible: false});
       this.props.onCloseAddNews();

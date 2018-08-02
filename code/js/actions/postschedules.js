@@ -1,5 +1,5 @@
 import axios from 'axios';
-import schedules from '../reducers/schedules';
+import { schedules } from './schedules';
 
 export const postschedules = (data) => dispatch => {
     axios.defaults.headers.common = {};
@@ -21,10 +21,9 @@ export const postschedules = (data) => dispatch => {
         dispatch(schedules());
     })
     .catch(function (error) {
-        console.log(error);
         dispatch({
             type: "POST_SCHEDULES_ERROR",
-            responseData: "error_meals",
+            responseData: "error_schedules",
         });		  	
     });
 };

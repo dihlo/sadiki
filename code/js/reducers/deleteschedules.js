@@ -9,11 +9,11 @@ export default function (state=INITIAL_STATE, action) {
 		case "DELETE_SCHEDULES":
             state.schedulesDelete.deleteloading = true;
             return state;
-        case "DELETE_SCHEDULES_OK":
+	case "DELETE_SCHEDULES_OK":
             state.schedulesDelete.deleteloading = false;
             state.schedulesDelete.deletedata = action.responseData;
             return state;
-		case "DELETE_SCHEDULES_ERROR":
+	case "DELETE_SCHEDULES_ERROR":
             state.schedulesDelete.deleteloading = false;
             state.schedulesDelete.deleteerror = action.responseData;
             return state;

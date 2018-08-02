@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { news } from './news';
+
 export const postnews = (data) => {
 	console.log('Я в то postnews');
 	return (dispatch) => {
@@ -19,7 +21,9 @@ export const postnews = (data) => {
 				type: "POST_NEWS_OK",
 				responseData: response.data,
 			});
-		  })
+			}).then(function() {
+					dispatch(news());
+			})
 		  .catch(function (error) {
 		   	dispatch({
 				type: "POST_NEWS_ERROR",

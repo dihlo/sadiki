@@ -25,29 +25,29 @@ const CollectionCreateForm = Form.create()(
           <Form layout="vertical">
             <FormItem label="Имя">
               {getFieldDecorator('name', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите наименование приема пищи' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите наименование приема пищи' }],
               })(
                 <Input type="textarea"/>
               )}
             </FormItem>
             <FormItem label="Калории">
               {getFieldDecorator('calories', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите калорийность' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите калорийность' }],
               })(<Input type="textarea" />)}
             </FormItem>
             <FormItem label="Описание">
               {getFieldDecorator('description', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите описание' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите описание' }],
               })(<Input type="textarea" />)}
             </FormItem>
             <FormItem label="Дата">
               {getFieldDecorator('meal_date', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите дата' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите дата' }],
               })(<Input type="textarea" />)}
             </FormItem>
             <FormItem label="Вес">
               {getFieldDecorator('weight', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите вес' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите вес' }],
               })(<Input type="textarea" />)}
             </FormItem>              
           </Form>
@@ -86,12 +86,10 @@ class ModalDiner extends React.Component {
 
   handleCreate () {
     const form = this.formRef.props.form;
-    console.log('form');
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      console.log(values);
       this.props.postmeals(values);
       this.props.meals();
       form.resetFields();

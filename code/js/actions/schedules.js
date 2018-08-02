@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export function schedules() {
     return (dispatch) => {
-        alert('schedules');
         axios.defaults.headers.common = {};
         dispatch({
             type: "GET_SCHEDULES"
