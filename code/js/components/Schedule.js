@@ -154,27 +154,26 @@ class Schedule extends React.Component {
     this.tableData();
     return (
         <div>
-
-        <Row >
-          <Col 
-            offset={1} 
-            span={11}
-            style={{ paddingTop: 20, paddingBottom: 20}}
-          >
-            <Titles/>            
-          </Col>
-          <Col
-            span={11}
-            style={{textAlign: 'right'}}
-          >
-            <ModalSchedules />            
-          </Col> 
-        </Row> 
-        <Row>
-          <Col offset={1} span={22}>        
-            <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
-          </Col>
-        </Row>
+            <Row >
+                <Col 
+                    offset={1} 
+                    span={11}
+                    style={{ paddingTop: 20, paddingBottom: 20}}
+                >
+                    <Titles/>            
+                </Col>
+                <Col
+                    span={11}
+                    style={{textAlign: 'right'}}
+                >
+                    <ModalSchedules />            
+                </Col> 
+            </Row> 
+            <Row>
+                <Col offset={1} span={22}>        
+                    <Table pagination={{ pageSize: 10 }} columns={this.columns} dataSource={this.props.data} onChange={onChange} />
+                </Col>
+            </Row>
       </div>
     );
   }

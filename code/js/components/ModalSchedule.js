@@ -25,7 +25,7 @@ const CollectionCreateForm = Form.create()(
           <Form layout="vertical">
             <FormItem label="Имя">
               {getFieldDecorator('name', {
-                rules: [{ required: true, message: 'Поле обезательное, укажите наименование приема пищи' }],
+                rules: [{ required: true, message: 'Поле обязательное, укажите наименование приема пищи' }],
               })(
                 <Input type="textarea"/>
               )}
@@ -71,9 +71,7 @@ class ModalSchedules extends React.Component {
       if (err) {
         return;
       }
-      console.log(this.props);
       this.props.postschedules(values);
-      this.props.schedules();
       form.resetFields();
       this.setState({ visible: false });
     });
