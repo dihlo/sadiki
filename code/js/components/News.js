@@ -46,7 +46,7 @@ class News extends React.Component {
         render: (text, record, index) => this.renderTextColumn(record, index, "body", text),
       },
       {
-        title: 'Опубликованно',
+        title: 'Опубликовано',
         dataIndex: 'publish',
         render: (text, record, index) => this.renderTextColumn(record, index, "publish", text),
       },       
@@ -138,8 +138,12 @@ class News extends React.Component {
     renderNewsAdd(props) {
       this.tableData();
       return (
-          <div>
-            <NewsAdd onCloseAddNews={() => this.onCloseAddNews()}/>
+        <div>
+            <Row>
+                <Col offset={1} span={22}>        
+                    <NewsAdd onCloseAddNews={() => this.onCloseAddNews()}/>
+                </Col>
+            </Row>
         </div>
       );  
     }
@@ -154,7 +158,6 @@ class News extends React.Component {
         console.log('handleSave');
         this.setState({editable: 0});
     }
-
 
     componentDidMount() {
       this.props.news();
@@ -171,6 +174,7 @@ class News extends React.Component {
     onDelete(id) {
       this.props.deletenews(id);
     }
+
     tableData() {
       console.log(this.props.data);
     }

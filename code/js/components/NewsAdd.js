@@ -81,7 +81,7 @@ const CollectionCreateForm = Form.create()(
           <Form layout="vertical">
             <FormItem label="Заголовок">
               {getFieldDecorator('title', {
-                rules: [{ required: true, message: 'Поле обезательное, необходим заголовок новости' }],
+                rules: [{ required: true, message: 'Поле обязательное, необходим заголовок новости' }],
               })(
                 <Input type="textarea"/>
               )}
@@ -89,7 +89,7 @@ const CollectionCreateForm = Form.create()(
             <FormItem label="Текст новости">
               {getFieldDecorator('body', {
                 rules: [{ required: true,
-                          message: 'Поле обезательное, необходим текст новости' 
+                          message: 'Поле обязательное, необходим текст новости' 
                         },
                         ],
               })(
@@ -169,7 +169,7 @@ class NewsAdd extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ paddingTop: 20 }}>
         <Button type="primary" onClick={this.handleCreate}>Сохранить</Button>
         &nbsp;
         <Button type="primary" onClick={this.props.onCloseAddNews}>Отменить</Button>
