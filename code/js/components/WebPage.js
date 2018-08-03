@@ -12,6 +12,7 @@ import Schedule from "./Schedule";
 import News from "./News";
 import Teamplate from "./Teamplate";
 import Users from "./Users";
+import Site from "./teamplate/Site";
 import WrappedRegistrationForm from "./Form";
 import { Row, Col } from 'antd';
 import {connect} from 'react-redux';
@@ -42,6 +43,7 @@ render() {
 						<Route path='/template' component={Teamplate}/>
 						<Route path='/user' component={Users}/>
 						<Route path='/camera' component={Diner}/>
+						<Route path='/landing' component={Site}/>
 					</Switch>
 			    </Col>	
 			</Row>	

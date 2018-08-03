@@ -1,0 +1,371 @@
+.logo {
+	width: 80%;
+	height: 70px;
+}
+.logoimg {
+	height: 70px;
+}
+.bigfoto {
+	width: 100%;
+	background: url(./img/big.jpg) no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+/*Teachers*/
+
+.teachers-main {
+    background: #27AE60;
+    font-family: 'PT Sans', sans-serif;
+    padding-bottom: 20px;
+}
+.teachers .section-title {
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    margin: 56px 0;
+    color: #FFF;
+}
+.teachers .teacher-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    margin: 0 auto;
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.teacher-name {
+    font-weight: bold;
+    line-height: normal;
+    font-size: 24px;
+    text-align: center;
+}
+.teacher-job {
+    font-size: 16px;
+    text-align: center;
+    font-style: italic;
+}
+.teacher-item {
+    color: #FFF;
+}
+.teacher-description {
+    font-size: 18px;
+    text-align: justify;
+}
+
+/*BigPic*/
+
+.bigpic {
+    color: #fff;
+}
+/*.bigpic img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}*/
+.bigpic-welcome {
+    position: absolute;
+    z-index:2;
+    top: 100px;
+    right: 100px;
+    width: 744px;
+    height: 373px;
+    background: rgba(39,174,96,0.6);
+}
+.bigpic-welcome-title {
+    font-family: "PT Sans";
+    font-size: 72px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+.bigpic-welcome-desc {
+    font-family: "PT Sans";
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-top:20px;
+}
+.bigpic-welcome-button{
+	font-size: 20px;
+	margin-top: 50px;
+}
+/*.bigpic-welcome-button {
+    background: #27AE60;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 272px;
+    height: 46px;
+    font-family: "PT Sans";
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    vertical-align: middle;
+    margin: 35px auto;
+}
+.bigpic-welcome-button-caption {
+    padding-top:12px;
+    padding-left:22px;
+}*/
+
+/*News*/
+
+.news p {
+    font-family: 'PT Sans', sans-serif;
+    line-height: 33px;
+    font-size: 18px;
+}
+.news .section-title {
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    margin: 56px 0;
+    color: #FFF;
+}
+.news {
+    background: #27AE60;
+}
+.all-news-button {
+    width: 549px;
+    height: 51px;
+    background: #F6F6F6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: PT Sans;
+    font-size: 22px;
+    text-align: center;
+    color: #3A3A3A;
+    margin: 30px auto;
+    display: block;
+    border: 0;
+}
+
+/*News Item*/
+
+.news p.news-title {
+    font-family: PT Sans;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 24px;
+    color: #000000;
+    margin: 5px 0 0 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #C6C6C6;
+}
+.news-item {
+    background: rgba(255,255,255, 0.85);
+    padding: 20px;
+    width: 100%;
+}
+.news p.news-date {
+    font-family: PT Sans;
+    font-style: italic;
+    font-size: 14px;
+    color: #524E4E;
+    margin: 5px 0;
+}
+.news p.news-text {
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 18px;
+    color: #424242;
+}
+.news .news-image {
+    width: 100%;
+    height: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.news a {
+    text-decoration: none;
+}
+
+/*Сlasses*/
+.classes {
+
+}
+.classes__title {
+    font-family: "PT Sans";
+    font-size: 48px;
+    font-weight: bold;
+    text-align:center;
+}
+.classes__text {
+    font-family: "PT Sans";
+    font-size: 14px;
+    font-weight: normal;
+    float:left;
+}
+
+/*СlassesCard*/
+
+.classes__image {
+    overflow: hidden;
+    height: 213px;
+}
+.classes__clear {
+    clear:both;
+}
+.classes__button {
+    width: 194px;
+    height: 32px;
+    font-family: "PT Sans";
+    font-size: 14px;
+    background: #F6F6F6;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 28px;
+    border: 0;
+}
+.classes__card-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "PT Sans";
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+}
+.classes__image-img {
+	float: right;
+    height: 213px;
+}
+.classes__card {
+    background: #F2994A;
+    height: 213px;
+    margin-bottom: 30px;
+}
+
+/*Contacts*/
+
+#contacts {    
+    font-family: 'PT Sans', sans-serif;
+}
+.google-map {
+    height: 522px;
+}
+.contacts p.section-title {
+    text-align: center;
+    font-weight: bold;
+    margin: 56px 0;
+    font-size: 48px;
+}
+.map-info {
+    position: absolute;
+    min-height: 300px;
+    min-width: 25%;
+    top: 77px;
+    right: 5%;
+    z-index: 200;
+    background: rgba(30, 143, 77, 0.9);
+}
+.map-title {
+    font-weight: bold;
+    line-height: normal;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0 20px;
+}
+.map-info-content {
+    color: #FFF;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.map-marker {
+    background: #FFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: 4px solid rgba(30, 143, 77, 1);
+    color: rgba(30, 143, 77, 1);
+    font-weight: bold;
+    padding: 2px 0 0 4px;
+    font-size: 15px;
+}
+.no-click #map-basics {
+    pointer-events: none;
+}
+.clicked #map-basics {
+    pointer-events: auto;
+}
+#map-basics {
+    position: relative;
+}
+
+/*Footer*/
+
+#footer {
+    background: #27AE60;
+    min-height: 139px;
+    font-family: 'PT Sans', sans-serif;
+}
+.copyright {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.footer {
+    background: #27AE60;
+    min-height: 139px;
+}
+.footer .footer-left {
+    line-height: 22px;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.footer .social-images img {
+    float: right;
+    margin: 16px 0 0 20px;
+}
+
+/*Inventory*/
+
+.inventory p {
+    font-family: 'PT Sans', sans-serif;
+    line-height: 33px;
+    font-size: 18px;
+}
+.inventory .section-title {
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    margin: 56px 0;
+}
+.inventory .slider {
+    margin-bottom: 42px;
+}
+.inventory .slider-decorator-1 button {
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 40px solid #9F9F9F;
+    border-right: 0;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    left: 80px;
+}
+.inventory .slider-decorator-0 button {
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 40px solid #9F9F9F;
+    border-left: 0;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+    right: 80px;
+}

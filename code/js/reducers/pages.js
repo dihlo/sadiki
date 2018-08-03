@@ -37,6 +37,13 @@ export default function() {
 			name: "Камеры",
 			icon: "camera-o",
 			url: "/camera",
-		},											
+		},
+		{
+			id: 7,
+			name: "Landing",
+			icon: "camera-o",
+			url: "/landing",
+		},	
+
 	]
 }
