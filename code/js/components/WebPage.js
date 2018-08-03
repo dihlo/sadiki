@@ -1,10 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import CarsList from "../containers/car-list";
-import Details from "../containers/details";
-import Page from "../containers/renderPage";
-import Pages from "../containers/pages";
-import { DatePicker, Layout} from 'antd';
+import {Layout} from 'antd';
 import MySider from "./Sider";
 import MyHeader from "./MyHeader";
 import Diner from "./Diner";
@@ -12,14 +7,13 @@ import Schedule from "./Schedule";
 import News from "./News";
 import Teamplate from "./Teamplate";
 import Users from "./Users";
-import Site from "./teamplate/Site";
-import WrappedRegistrationForm from "./Form";
+import Profile from "./Profile";
 import { Row, Col } from 'antd';
 import {connect} from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer } = Layout;
 
 
 class Webpage extends React.Component {
@@ -29,12 +23,12 @@ render() {
 	<div>
 	    <Layout>
 	      	<MyHeader />
-			<Layout style={{background: '#fff', width: '256 px;' }}>
+			<Layout style={{ background: '#fff' }}>
 				<Row>
 			  	<Col span={4}>
 			    	<MySider />
 			    </Col>
-			    <Col span={20}>
+			    <Col span={20} style={{ paddingTop: '20px' }}>
 					<Switch>
 						<Route exact path='/' component={Diner}/>
 						<Route path='/diner' component={Diner}/>
@@ -43,7 +37,7 @@ render() {
 						<Route path='/template' component={Teamplate}/>
 						<Route path='/user' component={Users}/>
 						<Route path='/camera' component={Diner}/>
-						<Route path='/landing' component={Site}/>
+						<Route path='/profile' component={Profile}/>
 					</Switch>
 			    </Col>	
 			</Row>	
@@ -60,10 +54,6 @@ function mapStateToProps(state) {
 	return {
 		pageID
 	};
-}
-
-function matchDispatchToProps (dispatch) {
-  return bindActionCreators ({}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, {})(Webpage));

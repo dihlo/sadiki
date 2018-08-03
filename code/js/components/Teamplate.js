@@ -77,13 +77,13 @@ class TeamplateForm extends React.Component {
               </FormItem>
               <FormItem>
                 {getFieldDecorator('Teachers', {
-                  rules: [{ required: true, message: 'Пожалуйста заполните данные преподователей' }],
+                  rules: [{ required: true, message: 'Пожалуйста заполните данные преподавателей' }],
                 })(
                   <div>
-                    <p><b>Преподователи</b></p>
+                    <p><b>Преподаватели</b></p>
                     <PictureLoader/>
-                    <Input placeholder="Имя преподователя" />
-                    <TextArea placeholder="Описание преподователя" rows={4} />                    
+                    <Input placeholder="Имя преподавателя" />
+                    <TextArea placeholder="Описание преподавателя" rows={4} />                    
                   </div>
 
                 )}

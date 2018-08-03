@@ -146,7 +146,8 @@ class Diner extends React.Component {
       this.props.deletemeals(id);
     }
     tableData() {
-      console.log(this.props.data);
+      //alert('tabledata');
+      //console.log(this.props.data);
     }
 
   render() {

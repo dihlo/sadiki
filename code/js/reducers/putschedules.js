@@ -28,18 +28,18 @@ export default function (state=INITIAL_STATE, action) {
 					state.schedulesPut.payload.weight = action.payload.value;
 				return state;										
 			}
-		return state;
+		    return state;
 		case "SEND_PUT_SCHEDULES":
 			state.schedulesPut.putloading = true;
-		return state;
+		    return state;
 		case "SEND_PUT_SCHEDULES_OK":
 			state.schedulesPut.loading = false;
 			state.schedulesPut.putloading = action.responseData;
-		return state;
+		    return state;
 		case "SEND_PUT_SCHEDULES_ERROR":
 			state.schedulesPut.putloading = false;
 			state.schedulesPut.putdata = action.responseData;
-		return state;
+		    return state;
 	default:
 		return state;
 	}

@@ -16,7 +16,7 @@ class MySider extends React.Component {
 
     //получаю выбранную страницу из URL (это нужно когда страница открывается по прямой ссылке)
     if(location.pathname != '/')
-      this.props.select(this.props.pages.find((e) => e.url === location.pathname).id.toString());
+        this.props.select(this.props.pages.find((e) => e.url === location.pathname).id.toString());
   }
 
   onClick({ item, key, keyPath }) {

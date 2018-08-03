@@ -2,38 +2,44 @@ export default function() {
 	return [
 		{
 			id: 1,
+			name: "Профиль",
+			icon: "user",
+			url: "/profile",
+		},
+		{
+			id: 2,
 			name: "Обеды",
 			icon: "coffee",
 			url: "/diner",
 		},
 
 		{
-			id: 2,
+			id: 3,
 			name: "Расписание",
 			icon: "schedule",
 			url: "/schedule",
 		},
 
 		{
-			id: 3,
+			id: 4,
 			name: "Новости",
 			icon: "solution",
 			url: "/news",
 		},
 		{
-			id: 4,
+			id: 5,
 			name: "Шаблоны",
 			icon: "fork",
 			url: "/template",
 		},
 		{
-			id: 5,
+			id: 6,
 			name: "Пользователи",
 			icon: "user",
 			url: "/user",
 		},
 		{
-			id: 6,
+			id: 7,
 			name: "Камеры",
 			icon: "camera-o",
 			url: "/camera",
