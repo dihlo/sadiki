@@ -3,6 +3,7 @@ var webpack = require('webpack');
 const fs  = require('fs');
 const lessToJs = require('less-vars-to-js');
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-theme-vars.less'), 'utf8'));
+//const myVariables = lessToJs(fs.readFileSync(path.join(__dirname, './code/js/components/teamplate/style.less'), 'utf8'));
 
 module.exports = {
     devServer: {
@@ -16,17 +17,25 @@ module.exports = {
     module: {
         loaders: [
             {
-              test: /\.css$/,  
-              include: /node_modules/,  
-              loaders: ['style-loader', 'css-loader'],
+              test: /\.css$/, 
+              loader: 'style!css' 
+              /*include: /node_modules/,  
+              loaders: ['style-loader', 'css-loader'],*/
             },
+            {
+              test: /\.(png|jpg|gif)$/, 
+              loader: 'file-loader'
+              /*include: /node_modules/,  
+              loaders: ['style-loader', 'css-loader'],*/
+            },            
             {
               test: /\.less$/,
               loader: 'style-loader!css-loader!less-loader',
               query: {
-                modifyVars: themeVariables
+                modifyVars: themeVariables,
               }
             },
+
             {
               test: /\.jsx?$/,
               exclude: /node_modules/,
@@ -66,11 +75,24 @@ module.exports = {
                 {loader: "css-loader"},
                 {loader: "less-loader",
                   options: {
-                    modifyVars: themeVariables
+                    modifyVars: themeVariables,
                   }
                 }
               ]
+            },
+            /*{
+              test: /\.(png|jpg|gif)$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {}
+                }
+              ]
             }            
+            {
+              test: /\.css$/,
+              use: [ 'style-loader', 'css-loader' ]
+            } */                                      
         ]              
     },
     output: {
