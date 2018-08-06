@@ -45,7 +45,7 @@ export default function() {
 			url: "/camera",
 		},
 		{
-			id: 7,
+			id: 8,
 			name: "Landing",
 			icon: "camera-o",
 			url: "/landing",

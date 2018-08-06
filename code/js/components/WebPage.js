@@ -8,6 +8,8 @@ import News from "./News";
 import Teamplate from "./Teamplate";
 import Users from "./Users";
 import Profile from "./Profile";
+import Site from "./teamplate/Site";
+import Camera from "./Camera";
 import { Row, Col } from 'antd';
 import {connect} from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -36,8 +38,9 @@ render() {
 						<Route path='/schedule' component={Schedule}/>
 						<Route path='/template' component={Teamplate}/>
 						<Route path='/user' component={Users}/>
-						<Route path='/camera' component={Diner}/>
+						<Route path='/camera' component={Camera}/>
 						<Route path='/profile' component={Profile}/>
+						<Route path='/landing' component={Site}/>
 					</Switch>
 			    </Col>	
 			</Row>	
