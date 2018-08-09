@@ -1,0 +1,65 @@
+
+/* Calendar class */
+
+.schedule .calendar-wrapper {
+	position: absolute;
+	right: 5%;
+	top: 440px;
+}
+.calendar__background {
+	width: 465px;
+	background-color:#FFF5D6;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.DayPicker {
+    width: 467px;
+}
+.DayPicker-Month {
+    width: 400px;
+    margin-top: 13px;
+    line-height: 37px;
+}
+.DayPicker-Day {
+    border: none;
+    font-family: "PT Sans";
+    font-weight: bold;
+    font-size: 18px;
+}
+.DayPicker-NavButton--prev {
+    left: 5rem;
+    top: 2rem;
+}
+.DayPicker-NavButton--next {
+    right: 5.6rem;
+    top: 2rem;
+}
+.DayPicker-Caption {
+    height: 5rem;
+    text-transform: uppercase;
+    font-family: "PT Sans";
+    font-weight: bold;
+    color: #AF3951;
+    font-size: 24px;
+    text-align: center;
+}
+.DayPicker-Day--today {
+    color: #fff;
+    font-weight: 500;
+    background: #AF3951;
+    border-radius: 42px;
+    line-height: 44px;
+}
+.DayPicker-Weekday {
+    display: table-cell;
+    padding: .5rem;
+    font-size: 18px;
+    text-align: center;
+    color: #656152;
+    text-transform: uppercase;
+    font-family: "PT Sans";
+}
+abbr[title] {
+    border: none;
+    text-decoration: none;
+}

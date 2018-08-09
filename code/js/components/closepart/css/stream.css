@@ -1,0 +1,28 @@
+.stream .section-title {
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 24px;
+    color: #2F313C;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.stream {
+    padding: 20px 0 0 127px;
+}
+.stream .stream-wrapper {
+    margin-bottom: 20px;
+}
+.record-title {
+    font-family: PT Sans;
+    font-size: 14px;
+    text-decoration-line: underline;
+    color: #2D9CDB;
+}
+.record-single {    
+    margin-bottom: 25px;
+}
+.record-video {
+    margin-bottom: 10px;
+}

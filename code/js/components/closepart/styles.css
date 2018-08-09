@@ -1,0 +1,209 @@
+/*body {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	font-family: 'Comfortaa', cursive;
+}
+a:hover { 
+    text-decoration: none; 
+    color: white; 
+   } */
+
+
+/* ID */
+
+
+/*Class*/
+
+.background {
+	background: #fff;
+	width: 100%;
+	height: 100vh;
+}
+
+/*Class components Home*/
+
+/*Class components Home*/
+
+
+/*Class components SubMenu*/
+
+.Navigation {
+	float: left;
+	width: 102px;
+	height: 100vh;
+	background: #4C4F5E;
+	text-align: center;
+}
+.Navigation li a {
+	color: white; 
+}
+.Navigation li a:hover {
+	color: red; 
+}
+.Navigation li {
+	list-style-type: none;
+	font-size: 18px;
+	padding-top: 25px; 
+}
+.Navigation ul {
+	margin-top: 100px;
+	padding: 0;
+}
+/*Class components CompletedMaterial*/
+.CompletedMaterial {
+	position: absolute;
+	width: 33%;
+	left: 900px;
+	top: 65px;
+}
+.CompletedMaterialTitle {
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 100%;
+	color: #000000;
+}
+
+
+/*Class components CompletedMaterialProgressLine*/
+
+.CompletedMaterialProgressLine {
+	padding-top: 20px;
+}
+.TitleProgressLine {
+	width: 100%;
+	height: 20px;
+}
+
+.TitleProgressLine div {
+ 	font-family: PT Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 100%;
+	color: #333333;
+}
+.TitleProgressLineTitle {
+	float: left;
+	padding-left: 10px;
+}
+.TitleProgressLineOneOf {
+	float: right;
+	padding-right: 10px;
+}
+.ProgressLine {
+	width: 100%;
+	height: 20px;
+	background: #CCCCCC;
+	border-radius: 5px;
+}
+.ProgressBar {
+	height: 20px;
+	background: #56CCF2;
+	border-radius: 5px;
+}
+
+/*Class components SheduleDay*/
+.SheduleDay {
+	position: absolute;
+	width: 50%;
+	left: 150px;
+	top: 65px;
+}
+
+/*Class components SheduleDayLine*/
+.SheduleDayLine{
+	width: 100%;
+	height: 60px;
+}
+.SheduleDayLineTime{
+	float: left;
+	width: 17%;
+	text-align: center;
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #000000;
+}
+.SheduleDayLineDivRing {
+	width: 17%;
+	float: left;
+	height: 60px;
+}
+.SheduleDayLineCyrcle {
+	margin-left: 40%;
+	border: solid #AF3951 2px;
+    border-radius: 50%;
+    height: 23px;
+    width: 23px;
+}
+.SheduleDayLineRing {
+	margin-left: 40%;
+    background:#AF3951;
+    border-radius: 50%;
+    height: 23px;
+    width: 23px;
+}
+.SheduleDayLineDescription {
+	float: left;
+	width: 64%;
+	text-align: left;
+	padding-left: 10px;
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #000000;
+}
+
+.SheduleDayLineVertical{
+	float: left;
+	margin-left: 48%;
+	width: 0px;
+	margin-top: 3px;
+	height: 30px;
+	border: 1px solid #AF3951;
+}
+
+.SheduleDayLineVerticalOff{
+	float: left;
+	width: 0px;
+	height: 0px;
+}
+.SheduleDayDayData {
+	float: left;
+	width: 50%;
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 100%;
+	color: #AF3951;
+}
+.SheduleDayDay {
+	padding-bottom: 40px;
+}
+.SheduleDayDayTomorrow {
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 100%;
+	text-decoration-line: underline;
+	color: #2D9CDB;
+}
+.SheduleDayTitle {
+	height: 50px;
+	font-family: PT Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 100%;
+	color: #2F313C;
+}

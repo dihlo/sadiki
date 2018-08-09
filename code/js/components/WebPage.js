@@ -10,6 +10,7 @@ import Users from "./Users";
 import Profile from "./Profile";
 import Site from "./teamplate/Site";
 import Camera from "./Camera";
+import Closepart from "./closepart/Closepart";
 import { Row, Col } from 'antd';
 import {connect} from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -41,6 +42,7 @@ render() {
 						<Route path='/camera' component={Camera}/>
 						<Route path='/profile' component={Profile}/>
 						<Route path='/landing' component={Site}/>
+						<Route path='/closepart' component={Closepart}/>
 					</Switch>
 			    </Col>	
 			</Row>	
