@@ -1,0 +1,60 @@
+.food .calendar-wrapper {
+    margin-top: 42px;
+}
+.food .section-title {
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 24px;
+    color: #2F313C;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.food-type-title {
+    background: #AF3951;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #F2F2F2;
+    display: inline-block;
+    padding: 2px 11px;
+    margin-bottom: 10px;
+}
+.food {
+    padding: 20px 0 0 127px;
+    font-family: PT Sans, sans-serif;
+}
+.food-today {
+    font-size: 14px;
+    color: #AF3951;
+}
+.food-menu-content {
+    font-size: 18px;
+}
+.food-menu-content p {
+    overflow: hidden;
+}
+.food-menu-content p:after {  content:'....................................................................................................................';
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.food-menu-content p span:first-of-type {
+  float: left;
+  margin-right: 10px;
+}
+.food-menu-content p span:last-of-type {
+  float: right;
+  margin-left: 10px;
+}
+.food-menu-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.food-menu-title span:last-of-type {
+    float: right;
+}
+.food-single {
+    margin-top: 30px;
+}

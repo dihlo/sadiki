@@ -49,7 +49,36 @@ export default function() {
 			name: "Landing",
 			icon: "camera-o",
 			url: "/landing",
-		},	
-
+		},
+		{
+			id: 9,
+			name: "Closepart",
+			icon: "camera-o",
+			url: "/closepart",
+		},
+		{
+			id: 10,
+			name: "Closepart food",
+			icon: "camera-o",
+			url: "/closepart/food",
+		},							
+		{
+			id: 11,
+			name: "Closepart home",
+			icon: "camera-o",
+			url: "/closepart/home",
+		},
+		{
+			id: 12,
+			name: "Closepart Schedule",
+			icon: "camera-o",
+			url: "/closepart/schedule",
+		},
+		{
+			id: 13,
+			name: "Closepart News",
+			icon: "camera-o",
+			url: "/closepart/news",
+		},							
 	]
 }
