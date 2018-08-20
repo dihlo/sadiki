@@ -49,7 +49,7 @@ class Closepart extends React.Component {
 					<Route path="/closepart/home" component={Home} />
 					<Route path="/closepart/food" component={Food} />
 					<Route path="/closepart/schedule" component={Schedule} />
-					<Route path="/colosepart/news" component={News}/>
+					<Route path="/closepart/news" component={News}/>
 				</Switch>
 			</div>	
 		);

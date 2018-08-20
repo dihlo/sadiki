@@ -15,7 +15,7 @@ import '../css/stream.css';
 class Home extends React.Component{
 	render() {
 	return (
-		<div className="background">			
+		<div className="background">	
 				<Row>
 					<Col span={2}>
 						<MenuClose />
