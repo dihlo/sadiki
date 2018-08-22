@@ -79,6 +79,12 @@ export default function() {
 			name: "Closepart News",
 			icon: "camera-o",
 			url: "/closepart/news",
-		},							
+		},
+		{
+			id: 14,
+			name: "Войти",
+			icon: "user",
+			url: "/login",
+		},
 	]
 }
